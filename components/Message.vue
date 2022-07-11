@@ -4,10 +4,10 @@
       <p>{{message}}</p>
       <img src="" @click="heartChange">
       <p>{{heartCount}}</p>
-      <img src="" @click="deleteMessage">
-      <img src="" @click="toCommentPage">
+      <img src="" @click="deleteMessage(message.id)">
+      <img src="" @click="toCommentPage(message.id)">
     </div>
-    <p>{{name}}</p>
+    <p>{{message.name}}</p>
   </div>
 </template>
 
@@ -27,6 +27,9 @@ methods:{
       await this.$axios.delete("http://127.0.0.1:8000/api/message/"+id);
       this.getMessage();
      },
+  toCommentPage(id):
+    
+    this.$router.push(/post/id);
   },
 };
 </script>

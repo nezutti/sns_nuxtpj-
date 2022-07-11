@@ -65,7 +65,7 @@ export default{
             
             this.$router.replace('/login')
           })
-        })
+        
           .catch((error) => {
           switch (error.code) {
             case 'auth/invalid-email':

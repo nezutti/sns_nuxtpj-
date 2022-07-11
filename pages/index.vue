@@ -29,6 +29,11 @@ export default{
      },
     },
 
-  }
+    created(){
+      this.getMessage();
+      },
+
+
+  };
 
 </script>
