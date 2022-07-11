@@ -46,11 +46,21 @@ export default{
         .createUserWithEmailAndPassword(this.name,this.email, this.password)
         .then((data) => {
           data.user.sendEmailVerification()
+          })
         .then((userCredential)=>{
-           this.uid=userCredential.user.uid;
-           this.name=
            
-          .then(() => {
+           this.name=userCrediential.user.name;
+           this.uid=userCredential.user.uid;
+           const sendData={
+             name:this.name,
+             uid:this.uid,
+             };
+           $this.axios.post("http://127.0.0.1:8000/api/user/",sendData);
+
+           })
+
+           
+        .then(() => {
            
             
             this.$router.replace('/login')
