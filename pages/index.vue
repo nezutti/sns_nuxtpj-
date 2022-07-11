@@ -5,7 +5,9 @@
       <h2>ホーム</h2>
       <ul>
        <li v-for="(message,index) in messages" :key="index" >
-         <Message.vue
+         <Message v-bind:message="message"></Message>
+       
+       </li>
 
       </ul>
     </div>

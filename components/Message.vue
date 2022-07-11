@@ -21,7 +21,7 @@ export default{
      };
     },
  
- props:["message"],
+props:["message"]
 methods:{
   async deleteMessage(id){
       await this.$axios.delete("http://127.0.0.1:8000/api/message/"+id);
