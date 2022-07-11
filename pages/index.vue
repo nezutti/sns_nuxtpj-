@@ -3,13 +3,13 @@
     <SideNav></SideNav>
     <div class="home-contents">
       <h2>ホーム</h2>
-      <ul>
-       <li v-for="(message,index) in messages" :key="index" >
-         <Message v-bind:message="message"></Message>
+      <div v-for="(message,index) in messages" :key="index" >
+        
+        <Message v-bind:message="message"></Message>
        
-       </li>
+      </div>
 
-      </ul>
+     
     </div>
   </div>
 </template>
