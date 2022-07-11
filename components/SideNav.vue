@@ -8,7 +8,7 @@
       <varidation-observer ref="obs" v-slot="ObserverProps">
         <varidation-provider v-slot="{errors}" rules="required|max:120">
           <label for="message">シェア</label>
-          <textarea v-model="message" name="message" id="message"></textarea>
+          <textarea v-model="newMessage" name="message" id="message"></textarea>
           <div class="error">{{ errors[0] }}</div>
 
         </varidation-provider>
