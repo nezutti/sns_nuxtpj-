@@ -2,7 +2,7 @@
   <div class="message">
     <div class="message-content">
       
-      <p>{{message.name}}</p>
+      <p>{{message.user.name}}</p>
       <img src="" @click="heartChange">
       <p>{{heartCount}}</p>
       <img src="" @click="deleteMessage(message.id)">
@@ -28,8 +28,8 @@ methods:{
       await this.$axios.delete("http://127.0.0.1:8000/api/message/"+id);
       this.getMessage();
      },
-  toCommentPage(id){
-    
+  async toCommentPage(id){
+    await this.$axios.get("http://127.0.0.1:8000/api/message/"+id);
     this.$router.push("/post/id");
   },
 }

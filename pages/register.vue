@@ -3,21 +3,22 @@
     <AuthHeader></AuthHeader>
     <div class="register-form">
       <h2>新規登録</h2>
-      <varidation-observer ref="obs" v-slot="ObserverProps">
-        <varidation-provider v-slot="{ errors }" rules="required|max:20">
-          <input v-model="name" type="text" name="name" id="name">
+      <validation-observer ref="obs" v-slot="ObserverProps">
+        <validation-provider v-slot="{ errors }" rules="required|max:20">
+          <input v-model="name" type="text" name="name" id="name" placeholder="ユーザーネーム">
+          <div class="error">{{errors[0]}}</div> 
+         </validation-provider>
+         <br/>
+        <validation-provider v-slot="{errors}" rules="required|email">
+          <input v-model="email" type="email" name="email" id="email" placeholder="メールアドレス">
           <div class="error">{{errors[0]}}</div>
-        </varidation-provider>
-        <varidation-provider v-slot="{errors}" rules="required|email">
-          <input v-model="email" type="email" name="email" id="email">
+        </validation-provider>
+        <validation-provider v-slot="{errors}" rules="required">
+          <input v-model="password" type="password" name="password" id="password" placeholder="パスワード">
           <div class="error">{{errors[0]}}</div>
-        </varidation-provider>
-        <varidation-provider v-slot="{errors}" rules="required">
-          <input v-model="password" type="password name="password" id="password">
-          <div class="error">{{errors[0]}}</div>
-        </varidation-provider>
+        </validation-provider>
         <button @click="register">新規登録</button>
-      </varidation-observer>
+      </validation-observer>
     </div>
   </div>
 </template>
@@ -38,12 +39,12 @@ export default{
     methods:{
       register(){
       if (!this.name || !this.email || !this.password) {
-        alert('メールアドレスまたはパスワードが入力されていません。')
+        alert('ユーザー名、メールアドレスまたはパスワードが入力されていません。')
         return
       }
       firebase
         .auth()
-        .createUserWithEmailAndPassword(this.name,this.email, this.password)
+        .createUserWithEmailAndPassword(this.email, this.password)
         .then((data) => {
           data.user.sendEmailVerification()
           })
@@ -55,10 +56,11 @@ export default{
              name:this.name,
              uid:this.uid,
              };
-           $this.axios.post("http://127.0.0.1:8000/api/user/",sendData);
+            $this.axios.post("http://127.0.0.1:8000/api/user/",sendData);
 
            })
 
+      
            
         .then(() => {
            

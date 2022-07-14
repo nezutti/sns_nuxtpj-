@@ -3,9 +3,12 @@
     <AuthHeader></AuthHeader>
     <div class="login-form">
       <h2>ログイン</h2>
-      <input v-model="email" type="email" name="email" required/>
-      <input v-model="password" type="password" name="password" required/>
+      <input v-model="email" type="email" name="email" placeholder="メールアドレス" required/>
+      <br/>
+      <input v-model="password" type="password" name="password" placeholder="パスワード"  required/>
+      <br/>
       <button @click="login">ログイン</button>
+      </br/>
     </div>
   </div>
 </template>

@@ -5,15 +5,15 @@
     <h3 @click="logout">ログアウト</h3>
 
     <div class="message-post">
-      <varidation-observer ref="obs" v-slot="ObserverProps">
-        <varidation-provider v-slot="{errors}" rules="required|max:120">
+      <validation-observer ref="obs" v-slot="ObserverProps">
+        <validation-provider v-slot="{errors}" rules="required|max:120">
           <label for="message">シェア</label>
           <textarea v-model="newMessage" name="message" id="message"></textarea>
           <div class="error">{{ errors[0] }}</div>
 
-        </varidation-provider>
+        </validation-provider>
         <button @click="insertMessage">シェアする</button>
-      </varidation-observer>
+      </validation-observer>
     </div>
   </div>
 </template>

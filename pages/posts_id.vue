@@ -11,13 +11,13 @@
         <div v-for="(comment,index) in comments" :key="index">
         </div>
         <div class="comment-form">
-          <varidation-observer ref="obs" v-slot="ObserverProps">
-            <varidation-provider v-slot="{errors}" rules="required|max:120">
+          <validation-observer ref="obs" v-slot="ObserverProps">
+            <validation-provider v-slot="{errors}" rules="required|max:120">
               <textarea v-model="newComment"  name="comment" id="comment"></textarea>
               <div class="error">{{ errors[0] }}</div>
-            </varidation-provider>
+            </validation-provider>
             <button @click="insertComment">コメント</button>
-          </varidation-observer>
+          </validation-observer>
         </div>
       </div>
     </div>    
