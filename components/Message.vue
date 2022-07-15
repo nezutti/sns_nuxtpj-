@@ -14,13 +14,7 @@
 
 <script>
 export default{
- data(){
-   return{
-     message:"",
-     
-     name:"",
-     };
-    },
+
  
 props:["message"],
 methods:{

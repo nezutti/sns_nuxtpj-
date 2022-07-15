@@ -19,11 +19,12 @@
 </template>
 
 <script>
-
+import firebase from '~/plugins/firebase'
 export default{
   data(){
    return{
     newMessage:null,
+    uid:"",
     };
   },
 
@@ -40,7 +41,17 @@ export default{
      },
 
     async insertMessage(){
-     const sendMessage={message:this.newMessage};
+    const currentUser = firebase.auth().currentUser;
+    this.uid = currentUser.uid;
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(currentUser.uid)
+      .get()  
+    console.log(currentUser);
+     
+    
+     const sendMessage={message:this.newMessage, user_uid:this.uid};
      await this.$axios.post("http://127.0.0.1:8000/api/message",sendMessage);
      this.getMessage();
        },
