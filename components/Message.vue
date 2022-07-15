@@ -8,7 +8,7 @@
       <img src="../img/cross.png" @click="deleteMessage(message.id)">
       <img src="../img/detail.png" @click="toCommentPage(message.id)">
     </div>
-    <p>{{message}}</p>
+    <p>{{message.message}}</p>
   </div>
 </template>
 
@@ -32,6 +32,7 @@ methods:{
 }
 }
 </script>
+
 
   
     

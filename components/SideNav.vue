@@ -42,20 +42,25 @@ export default{
 
     async insertMessage(){
     const currentUser = firebase.auth().currentUser;
-    this.uid = currentUser.uid;
-    firebase
-      .firestore()
-      .collection("users")
-      .doc(currentUser.uid)
-      .get()  
-    console.log(currentUser);
-     
-    
-     const sendMessage={message:this.newMessage, user_uid:this.uid};
-     await this.$axios.post("http://127.0.0.1:8000/api/message",sendMessage);
-     this.getMessage();
-       },
+      if(currentUser) {
+        const sendMessage = { message: this.newMessage, user_uid: currentUser.uid };
+        console.log(sendMessage);
+        await this.$axios.post("http://127.0.0.1:8000/api/message", sendMessage);
+        this.getMessage();
+      }
     },
+
+     async getMessage(){
+     const resMessage=await this.$axios.get( "http://127.0.0.1:8000/api/message/");
+     console.log(resMessage);
+     this.messages=resMessage.data.data;
+     },
+
+       created(){
+      this.getMessage();
+      },
+
+   },
   };
 
 

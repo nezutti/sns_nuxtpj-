@@ -23,17 +23,20 @@ export default{
     },
 
   methods:{
-    async getMessage(){
+     async getMessage(){
      const resMessage=await this.$axios.get( "http://127.0.0.1:8000/api/message/");
      console.log(resMessage);
      this.messages=resMessage.data.data;
-     },
-    },
+     }
 
-    created(){
+     },
+
+  created(){
       this.getMessage();
       },
 
+
+  
 
   };
 
