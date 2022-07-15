@@ -2,9 +2,9 @@
   <div class="post-page">
     <SideNav></SideNav>
     <div class="post">
+      <Message :message='{{this.$route.params.id}}></Message>
       
       <h2>ホーム</h2>
-      <Message></Message>
       
       <div class="comments">
         <h3>コメント</h3>

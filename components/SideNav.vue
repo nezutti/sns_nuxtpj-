@@ -53,6 +53,7 @@ export default{
      async getMessage(){
      const resMessage=await this.$axios.get( "http://127.0.0.1:8000/api/message/");
      console.log(resMessage);
+      location.reload()
      this.messages=resMessage.data.data;
      },
 

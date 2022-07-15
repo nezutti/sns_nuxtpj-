@@ -20,12 +20,19 @@ props:["message"],
 methods:{
   async deleteMessage(id){
       await this.$axios.delete("http://127.0.0.1:8000/api/message/"+id);
+       location.reload()
       this.getMessage();
      },
   async toCommentPage(id){
-    await this.$axios.get("http://127.0.0.1:8000/api/message/"+id);
-    this.$router.push("/post/id");
+    const findMessage=await this.$axios.get("http://127.0.0.1:8000/api/message/"+id);
+    this.$router.push("/posts/${findMessage}");
   },
+
+   async getMessage(){
+     const resMessage=await this.$axios.get( "http://127.0.0.1:8000/api/message/");
+     console.log(resMessage);
+     this.messages=resMessage.data.data;
+     },
 
  
 
