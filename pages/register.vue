@@ -37,7 +37,7 @@ export default{
     },
 
     methods:{
-      register(){
+       register(){
       if (!this.name || !this.email || !this.password) {
         alert('ユーザー名、メールアドレスまたはパスワードが入力されていません。')
         return
@@ -46,19 +46,19 @@ export default{
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((data) => {
-          data.user.sendEmailVerification()
-          })
-        .then((userCredential)=>{
-           
-           this.name=userCrediential.user.name;
-           this.uid=userCredential.user.uid;
+          console.log(data);
+          data.user.sendEmailVerification();
+          
+          this.uid=data.user.uid;
            const sendData={
              name:this.name,
              uid:this.uid,
              };
-            $this.axios.post("http://127.0.0.1:8000/api/user/",sendData);
+           this.$axios.post("http://127.0.0.1:8000/api/user/",sendData)
+          
+         
 
-           })
+           
 
       
            
@@ -67,6 +67,8 @@ export default{
             
             this.$router.replace('/login')
           })
+          })
+          
         
           .catch((error) => {
           switch (error.code) {
@@ -84,7 +86,9 @@ export default{
               break
           }
         })
+       
       },
+      
     },
   }
 </script>

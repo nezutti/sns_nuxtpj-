@@ -3,10 +3,10 @@
     <div class="message-content">
       
       <p>{{message.user.name}}</p>
-      <img src="" @click="heartChange">
-      <p>{{heartCount}}</p>
-      <img src="" @click="deleteMessage(message.id)">
-      <img src="" @click="toCommentPage(message.id)">
+      <img src="../img/heart.png">
+      
+      <img src="../img/cross.png" @click="deleteMessage(message.id)">
+      <img src="../img/detail.png" @click="toCommentPage(message.id)">
     </div>
     <p>{{message}}</p>
   </div>
@@ -17,7 +17,7 @@ export default{
  data(){
    return{
      message:"",
-     heartCount:"",
+     
      name:"",
      };
     },
@@ -32,8 +32,11 @@ methods:{
     await this.$axios.get("http://127.0.0.1:8000/api/message/"+id);
     this.$router.push("/post/id");
   },
+
+ 
+
 }
-};
+}
 </script>
 
   

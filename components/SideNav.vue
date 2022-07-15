@@ -1,6 +1,6 @@
 <template>
   <div class="SideNav">
-    <img src="">
+    <img src="../img/logo.png">
     <NuxtLink to="/">ホーム</NuxtLink>
     <h3 @click="logout">ログアウト</h3>
 
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import firebase from '~/plugins/firebase'
+
 export default{
   data(){
    return{
@@ -35,13 +35,14 @@ export default{
     .then(() => {
       alert('ログアウトが完了しました')
       this.$router.replace('/login')
+      
         })
      },
 
     async insertMessage(){
      const sendMessage={message:this.newMessage};
      await this.$axios.post("http://127.0.0.1:8000/api/message",sendMessage);
-     this.getCount();
+     this.getMessage();
        },
     },
   };
