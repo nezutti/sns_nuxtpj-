@@ -4,7 +4,7 @@
     <div class="post">
       <div class="message">
         <h2>ホーム</h2>
-        <Message :message=findMessage({{$route.params.id}})></Message>
+        <Message :message=findMessage(params.id)></Message>
       
       </div>
       
