@@ -4,7 +4,7 @@
     <div class="post">
       <div class="message">
         <h2>ホーム</h2>
-        <Message :message=findMessage(params.id)></Message>
+        <Message :message=findMessage></Message>
       
       </div>
       
@@ -31,7 +31,9 @@
 </template>
 
 <script>
+import firebase from '~/plugins/firebase'
 export default{
+
   data(){
     return{
       commemts:[],
@@ -42,10 +44,10 @@ export default{
   methods:{
    
     
-    async findMessage(id){
-     
-       const findData=await this.$axios.get("http://127.0.0.1:8000/api/message/"+id);
-       console.log(findData);
+    async findMessage(){
+       
+       const findData=await this.$axios.get(`http://127.0.0.1:8000/api/message/${this.$route.params.id}`);
+      
        
        this.comments=findData.data.data.comments;
      },
