@@ -12,7 +12,7 @@
         <h3>コメント</h3>
         <div v-for="(comment,index) in comments" :key="index">
           <div class="comment">
-            <p>{{comment.
+            <p>{{comment.name}}</p>
             <p>{{comment.comment}}</p>
           </div>
         </div>
@@ -55,10 +55,10 @@ export default{
     async insertComment(){
       const currentUser = firebase.auth().currentUser;
       if(currentUser) {
-        const sendComment= { comment: this.newComment, user_uid: currentUser.uid,message_id:params.id} ;
+        const sendComment= { comment: this.newComment, user_uid: currentUser.uid} ;
         
       await this.$axios.post("http://127.0.0.1:8000/api/comment/",sendComment);
-      this.findMessage(id);
+      this.findMessage();
     }
   },
   
