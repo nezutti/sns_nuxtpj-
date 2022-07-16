@@ -24,13 +24,17 @@ methods:{
       this.getMessage();
      },
   async toCommentPage(id){
-    const findMessage=await this.$axios.get("http://127.0.0.1:8000/api/message/"+id);
-    this.$router.push("/posts/${findMessage}");
+   
+
+    
+    this.$router.push(`/posts/${id}`);
   },
 
    async getMessage(){
-     const resMessage=await this.$axios.get( "http://127.0.0.1:8000/api/message/");
-     console.log(resMessage);
+    const resMessage=await this.$axios.get( "http://127.0.0.1:8000/api/message/"+id);
+     
+    
+   
      this.messages=resMessage.data.data;
      },
 

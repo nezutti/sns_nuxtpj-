@@ -2,13 +2,19 @@
   <div class="post-page">
     <SideNav></SideNav>
     <div class="post">
-      <Message :message='{{this.$route.params.id}}></Message>
+      <div class="message">
+        <h2>ホーム</h2>
+        <Message :message=findMessage({{$route.params.id}})></Message>
       
-      <h2>ホーム</h2>
+      </div>
       
       <div class="comments">
         <h3>コメント</h3>
         <div v-for="(comment,index) in comments" :key="index">
+          <div class="comment">
+            <p>{{comment.
+            <p>{{comment.comment}}</p>
+          </div>
         </div>
         <div class="comment-form">
           <validation-observer ref="obs" v-slot="ObserverProps">
@@ -34,23 +40,26 @@ export default{
     },
 
   methods:{
-    async getComment(){
-       const commentData=await this.$axios.get( "http://127.0.0.1:8000/api/comment/");
-       this.comments=commentData.data.data;
-      },
-
-    async insertCommet(){
-      const sendComment={comment:this.newComment}; //送る先のテーブルのカラムと同じ値にする(comment)//
-      await this.$axios.get("http://127.0.0.1:8000/api/comment/",sendComment);
-      this.getComment();
-    },
-  },
-  created(){
-    this.getComment();
-   },
-};
-</script>
+   
     
+    async findMessage(id){
+     
+       const findData=await this.$axios.get("http://127.0.0.1:8000/api/message/"+id);
+       console.log(findData);
+       
+       this.comments=findData.data.data.comments;
+     },
 
-
+    async insertComment(){
+      const currentUser = firebase.auth().currentUser;
+      if(currentUser) {
+        const sendComment= { comment: this.newComment, user_uid: currentUser.uid,message_id:params.id} ;
+        
+      await this.$axios.post("http://127.0.0.1:8000/api/comment/",sendComment);
+      this.findMessage();
+    }
+  },
+  },
+  }
+</script>
     
