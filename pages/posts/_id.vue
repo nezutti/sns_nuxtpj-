@@ -56,10 +56,16 @@ export default{
         const sendComment= { comment: this.newComment, user_uid: currentUser.uid,message_id:params.id} ;
         
       await this.$axios.post("http://127.0.0.1:8000/api/comment/",sendComment);
-      this.findMessage();
+      this.findMessage(id);
     }
   },
+  
+    
   },
+  created(){
+     this.findMessage();
+  },
+    
   }
 </script>
     
