@@ -12,7 +12,7 @@
         <h3>コメント</h3>
         <div v-for="(comment,index) in comments" :key="index">
           <div class="comment">
-            <p>{{comment.name}}</p>
+            <p>{{comment.user.name}}</p>
             <p>{{comment.comment}}</p>
           </div>
         </div>
@@ -36,7 +36,7 @@ export default{
 
   data(){
     return{
-      commemts:[],
+      comments:[],
       newComment:"",
       };
     },
