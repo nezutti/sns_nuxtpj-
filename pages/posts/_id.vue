@@ -4,7 +4,7 @@
     <div class="post">
       <div class="message">
         <h2>ホーム</h2>
-        <Message :message=findMessage></Message>
+        <Message :message="message"></Message>
       
       </div>
       
@@ -38,6 +38,7 @@ export default{
     return{
       comments:[],
       newComment:"",
+      message:[],
       };
     },
 
@@ -48,7 +49,7 @@ export default{
        
        const findData=await this.$axios.get(`http://127.0.0.1:8000/api/message/${this.$route.params.id}`);
       
-       
+       this.message=findData.data.data;
        this.comments=findData.data.data.comments;
      },
 
