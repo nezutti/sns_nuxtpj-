@@ -38,7 +38,7 @@ export default{
     return{
       comments:[],
       newComment:"",
-      message:[],
+      message:"",
       };
     },
 
