@@ -51,6 +51,12 @@ export default{
       
        this.message=findData.data.data;
        this.comments=findData.data.data.comments;
+       console.log(this.message);
+       console.log(this.message.comments);
+       console.log(this.message.message);
+      
+       
+
      },
 
     async insertComment(){
