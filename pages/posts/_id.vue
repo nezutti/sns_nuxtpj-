@@ -4,7 +4,7 @@
     <div class="post">
       <div class="message">
         <h2>ホーム</h2>
-        <Message :message="message"></Message>
+        <Message v-bind:message="message"></Message>
       
       </div>
       
