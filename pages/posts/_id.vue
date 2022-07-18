@@ -5,7 +5,9 @@
       <div class="message">
         <h2>ホーム</h2>
         
-        <Message v-if="message2" v-bind:message="message2"></Message>
+        <Message v-if="message2"  v-bind:message="message2"></Message>
+
+        </div>
         
         
         
@@ -44,7 +46,7 @@ export default{
     return{
       comments:[],
       newComment:"",
-      message2:[],
+      message2:"",
       };
     },
 
@@ -74,7 +76,7 @@ export default{
     async insertComment(){
       const currentUser = firebase.auth().currentUser;
       if(currentUser) {
-        const sendComment= { comment: this.newComment, user_uid: currentUser.uid,} ;
+      const sendComment= { comment: this.newComment, user_uid: currentUser.uid,message_id:this.message2.id} ;
         
       await this.$axios.post("http://127.0.0.1:8000/api/comment/",sendComment);
       this.findMessage();
