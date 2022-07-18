@@ -4,17 +4,17 @@
     <div class="post">
       <div class="message">
         <h2>ホーム</h2>
-        <Message v-bind:message="message"></Message>
+        <Message v-bind:message="message2"></Message>
       
       </div>
       
       <div class="comments">
         <h3>コメント</h3>
         <div v-for="(comment,index) in comments" :key="index">
-          <div class="comment">
-            <p>{{comment.user.name}}</p>
-            <p>{{comment.comment}}</p>
-          </div>
+         
+          <p>{{comment.user.name}}</p>
+          <p>{{comment.comment}}</p>
+          
         </div>
         <div class="comment-form">
           <validation-observer ref="obs" v-slot="ObserverProps">
@@ -38,7 +38,7 @@ export default{
     return{
       comments:[],
       newComment:"",
-      message:"",
+      message2:"",
       };
     },
 
@@ -49,11 +49,17 @@ export default{
        
        const findData=await this.$axios.get(`http://127.0.0.1:8000/api/message/${this.$route.params.id}`);
       
-       this.message=findData.data.data;
+       this.message2=findData.data.data;
        this.comments=findData.data.data.comments;
-       console.log(this.message);
-       console.log(this.message.comments);
-       console.log(this.message.message);
+       console.log(this.message2);
+       console.log(this.message2.message);
+       console.log(this.message2.comments);
+       console.log(this.message2.user);
+       console.log(this.message2.user.name);
+       console.log(this.comments);
+       
+      
+      
       
        
 
@@ -62,7 +68,7 @@ export default{
     async insertComment(){
       const currentUser = firebase.auth().currentUser;
       if(currentUser) {
-        const sendComment= { comment: this.newComment, user_uid: currentUser.uid} ;
+        const sendComment= { comment: this.newComment, user_uid: currentUser.uid,} ;
         
       await this.$axios.post("http://127.0.0.1:8000/api/comment/",sendComment);
       this.findMessage();
