@@ -4,9 +4,9 @@
     <div class="post">
       <div class="message">
         <h2>ホーム</h2>
-        <div v-for="(message,index) in message2">
-          <Message v-bind:message="message2"></Message>
-        </div>
+        
+        <Message v-if="message2" v-bind:message="message2"></Message>
+        
         
         
         
@@ -44,7 +44,7 @@ export default{
     return{
       comments:[],
       newComment:"",
-      message2:"",
+      message2:[],
       };
     },
 
