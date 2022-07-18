@@ -4,18 +4,24 @@
     <div class="post">
       <div class="message">
         <h2>ホーム</h2>
-        <Message v-bind:message="message2"></Message>
+        <div v-for="(message,index) in message2">
+          <Message v-bind:message="message2"></Message>
+        </div>
+        
+        
+        
       
       </div>
       
       <div class="comments">
         <h3>コメント</h3>
-        <div v-for="(comment,index) in comments" :key="index">
-         
+       
+        <div v-for="(comment,index) in comments">   
           <p>{{comment.user.name}}</p>
           <p>{{comment.comment}}</p>
-          
         </div>
+          
+        
         <div class="comment-form">
           <validation-observer ref="obs" v-slot="ObserverProps">
             <validation-provider v-slot="{errors}" rules="required|max:120">
