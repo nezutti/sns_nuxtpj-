@@ -45,7 +45,7 @@ export default{
 </script>
 <style>
 *{
-   outline: 1px solid red !important;
+
    margin:0px;
    padding:0px;
    

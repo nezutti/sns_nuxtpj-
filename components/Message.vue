@@ -22,6 +22,7 @@ data(){
        heartColor:"whiteColor",
        hearts:[],
        
+       
       }
     },
 
@@ -39,22 +40,26 @@ methods:{
    },
 
   async changeHeart(){
-       this.heart=!this.heart;
+       console.log(this.message);
+       console.log(this.message.id);
+       this.activeheart=!this.activeheart;
        if(this.activeHeart){
          const currentUser = firebase.auth().currentUser;
          if(currentUser) {
-           console.log(this.message);
+           
            const sendHeart={user_uid:currentUser.uid, message_id:this.message.id};
            await this.$axios.post("http://localhost:8000/api/heart/",sendHeart);
+          
            this.message.hearts.length++;
            this.heartColor="redColor";
           
 
        }
        }else{
-          this.hearts=this.message.hearts;
+         
           
           await this.$axios.delete("http://localhost:8000/api/heart/"+id);
+          this.hearts=message.hearts;
           this.message.hearts.length--;
           this.heartColor="whiteColor";
            
@@ -65,8 +70,7 @@ methods:{
     },
 
     
-    
-    
+ 
     
 
    async getMessage(){
