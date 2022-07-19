@@ -5,8 +5,8 @@
       <p>{{message.user.name}}</p>
       <img src="../img/heart.png" v-bind:class="heartColor" @click="changeHeart()">
       <p>{{message.hearts.length}}</p>
-      <img src="../img/cross.png" v-bind:class="heartColor" @click="deleteMessage(message.id)">
-      <img src="../img/detail.png" @click="toCommentPage(message.id)">
+      <img src="../img/cross.png" class="crossImg" @click="deleteMessage(message.id)">
+      <img src="../img/detail.png" class="detailImg" @click="toCommentPage(message.id)">
     </div>
     <p>{{message.message}}</p>
   </div>
@@ -20,7 +20,7 @@ data(){
     return{
        activeHeart:true,
        heartColor:"whiteColor",
-       hearts:[],
+       
        
        
       }
@@ -89,12 +89,30 @@ methods:{
 <style>
  
  .redColor{
-    color:red;
+    filter:opacity(1.0) drop-shadow(0 0 0 red);
+    width:20px;
+    height:20px;
   }
 
 .whiteColor{
     color:white;
+    width:20px;
+    height:20px;
     }
+
+.crossImg{
+  width:20px;
+  height:20px;
+  }
+
+.detailImg{
+  width:20px;
+  height:20px;
+  }
+  
+.message-content{
+  display:flex;
+  }
 </style>
 
 
