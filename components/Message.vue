@@ -89,13 +89,19 @@ methods:{
 <style>
  
  .redColor{
-    filter:opacity(1.0) drop-shadow(0 0 0 red);
+   -webkit-mask-image:url("../img/heart.png");
+    mask-image: url("../img/heart.png");
+    background-color:red;
+   
     width:20px;
     height:20px;
   }
 
 .whiteColor{
-    color:white;
+  -webkit-mask-image:url("../img/heart.png");
+   mask-image: url("../img/heart.png");
+   background-color:white;
+   mask-image: url("../img/heart.png");
     width:20px;
     height:20px;
     }
