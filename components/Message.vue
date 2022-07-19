@@ -18,8 +18,9 @@ export default{
 
 data(){
     return{
-       heart:false,
+       activeHeart:false,
        heartColor:"whiteColor",
+       hearts:[],
        
       }
     },
@@ -39,10 +40,10 @@ methods:{
 
   async changeHeart(){
        this.heart=!this.heart;
-       if(this.heart){
+       if(this.activeHeart){
          const currentUser = firebase.auth().currentUser;
          if(currentUser) {
-          console.log(this.message.id);
+          
            sendHeart={user_uid:currentUser.uid, message_id:this.message.id};
            await this.$axios.post("http://localhost:8000/api/heart/",sendHeart);
            this.message.hearts.length++;
@@ -51,6 +52,8 @@ methods:{
 
        }
        }else{
+          this.hearts=this.message.hearts;
+          
           await this.$axios.delete("http://localhost:8000/api/heart/"+id);
           this.message.hearts.length--;
           this.heartColor="whiteColor";
