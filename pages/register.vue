@@ -131,7 +131,7 @@ input{
      width:100px;
      border-radius:15px;
      margin:10px auto;
-     padding:5px 19px;
+     padding:5px 10px;
      color:white;
      cursor:pointer;
      font-weight:bold;

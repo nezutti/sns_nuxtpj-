@@ -1,18 +1,20 @@
 <template>
-  <div class="SideNav">
-    <img src="../img/logo.png">
-    <NuxtLink to="/">ホーム</NuxtLink>
-    <h3 @click="logout">ログアウト</h3>
+  <div class="sideNav">
+    <img src="../img/logo.png" class="logo">
+    <br/>
+    <NuxtLink to="/" class="homeLink">ホーム</NuxtLink>
+    <h3 @click="logout" class="logoutLink">ログアウト</h3>
 
     <div class="message-post">
       <validation-observer ref="obs" v-slot="ObserverProps">
         <validation-provider v-slot="{errors}" rules="required|max:120">
-          <label for="message">シェア</label>
-          <textarea v-model="newMessage" name="message" id="message"></textarea>
+          <label for="message" class="message-label">シェア</label>
+          <br/>
+          <textarea v-model="newMessage" name="message" id="message" class="message-content"></textarea>
           <div class="error">{{ errors[0] }}</div>
 
         </validation-provider>
-        <button @click="insertMessage">シェアする</button>
+        <button @click="insertMessage" class="share-btn">シェアする</button>
       </validation-observer>
     </div>
   </div>
@@ -66,5 +68,63 @@ export default{
 
 
 </script>
+<style>
+*{
+   outline: 1px solid red !important;
+   margin:0px;
+   padding:0px;
+   
+   }
+
+.sideNav{
+  padding:16px 12px;
+  }
+  
+
+.logo{
+ width:100px;
+ }
+
+ .message-content{
+   width:300px;
+   height:100px;
+   border-radius:10px;
+   }
+.homeLink{
+  text-decoration:none;
+  color:white;
+  font-size:13px;
+  font-weight:bold;
+  }
+
+.logoutLink{
+  color:white;
+  font-size:13px;
+}
+
+.share-btn{
+  display:block;
+   width:100px;
+    border-radius:15px;
+    margin:10px left;
+    padding:5px 10px;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+    background-color:#704cbc;
+
+    }
+
+.message-label{
+  font-size:13px;
+  font-weight:bold;
+  color:white;
+  }
+     
+  
+
+   
+</style>
+
   
      

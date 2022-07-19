@@ -9,7 +9,7 @@
 </template>
 <style>
  *{
-   background-color:#00053a;
+   background-color:green;
    outline: 1px solid red !important;
    margin:0px;
    padding:0px;
