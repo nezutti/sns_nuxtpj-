@@ -21,6 +21,7 @@
         <div v-for="(comment,index) in comments">   
           <p>{{comment.user.name}}</p>
           <p>{{comment.comment}}</p>
+          
         </div>
           
         
@@ -81,7 +82,14 @@ export default{
       await this.$axios.post("http://127.0.0.1:8000/api/comment/",sendComment);
       this.findMessage();
     }
-  },
+
+    },
+
+    async deleteComment(){
+        await this.$axios.delete("http://127.0.0.1:8000/api/comment/"+id);
+        location.reload();
+        this.findMessage();
+    },
   
     
   },

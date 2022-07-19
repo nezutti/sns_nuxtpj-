@@ -8,7 +8,7 @@
           <input v-model="name" type="text" name="name" id="name" placeholder="ユーザーネーム">
           <div class="error">{{errors[0]}}</div> 
          </validation-provider>
-         <br/>
+         
         <validation-provider v-slot="{errors}" rules="required|email">
           <input v-model="email" type="email" name="email" id="email" placeholder="メールアドレス">
           <div class="error">{{errors[0]}}</div>
@@ -17,7 +17,7 @@
           <input v-model="password" type="password" name="password" id="password" placeholder="パスワード">
           <div class="error">{{errors[0]}}</div>
         </validation-provider>
-        <button @click="register">新規登録</button>
+        <button @click="register" class="register-btn">新規登録</button>
       </validation-observer>
     </div>
   </div>
@@ -92,6 +92,55 @@ export default{
     },
   }
 </script>
+
+<style>
+.register-form{
+  width:300px;
+  padding:1% 3%;
+  margin:200px auto;
+  background-color:white;
+  border-radius:8px;
+  overflow:hidden;
+  z-index:10;
+  }
+
+h2{
+  background-color:white;
+  text-align:center;
+  font-weight:bold;
+  font-size:15px;
+  }
+
+input{
+  background:white;
+  height:30px;
+  width:100%;
+  border-radius:5px;
+  margin:10px 0px;
+  display:inline-block;
+  padding-left:2%;
+  
+  
+  
+  
+
+  }
+
+  .register-btn{
+    display:block;
+     width:100px;
+     border-radius:15px;
+     margin:10px auto;
+     padding:5px 19px;
+     color:white;
+     cursor:pointer;
+     font-weight:bold;
+     background-color:#704cbc;
+     
+     }
+</style>
+
+
 
         
   

@@ -60,6 +60,13 @@ export default{
 }
 </script>
 
+<style>
+.login-form{
+   width:300px;
+   margin:100px auto;
+   }
+</style>
+
         
   
       
