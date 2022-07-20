@@ -2,13 +2,13 @@
   <div class="message">
     <div class="message-content">
       
-      <p>{{message.user.name}}</p>
+      <p class="message-userName">{{message.user.name}}</p>
       <img src="../img/heart.png" v-bind:class="heartColor" @click="changeHeart()">
       <p>{{message.hearts.length}}</p>
       <img src="../img/cross.png" class="crossImg" @click="deleteMessage(message.id)">
       <img src="../img/detail.png" class="detailImg" @click="toCommentPage(message.id)">
     </div>
-    <p>{{message.message}}</p>
+    <p class="message-text">{{message.message}}</p>
   </div>
 </template>
 
@@ -58,7 +58,7 @@ methods:{
        }else{
          
           
-          await this.$axios.delete("http://localhost:8000/api/heart/"+id);
+          await this.$axios.delete('http://localhost:8000/api/heart/${this.message.id}');
           this.hearts=message.hearts;
           this.message.hearts.length--;
           this.heartColor="whiteColor";
@@ -74,7 +74,7 @@ methods:{
     
 
    async getMessage(){
-    const resMessage=await this.$axios.get( "http://127.0.0.1:8000/api/message/"+id);
+    const resMessage=await this.$axios.get( "http://127.0.0.1:8000/api/message/");
      
     
     
@@ -91,7 +91,13 @@ methods:{
  .redColor{
    -webkit-mask-image:url("../img/heart.png");
     mask-image: url("../img/heart.png");
+    mask-size: contain;
+   -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+   -webkit-mask-repeat: no-repeat;
     background-color:red;
+    background-color:white;
+    margin:0px 6px;
    
     width:20px;
     height:20px;
@@ -100,8 +106,13 @@ methods:{
 .whiteColor{
   -webkit-mask-image:url("../img/heart.png");
    mask-image: url("../img/heart.png");
+   mask-size: contain;
+   -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+   -webkit-mask-repeat: no-repeat;
    background-color:white;
-   mask-image: url("../img/heart.png");
+   margin:0px 6px;
+   
     width:20px;
     height:20px;
     }
@@ -109,15 +120,37 @@ methods:{
 .crossImg{
   width:20px;
   height:20px;
+  margin-left:6px;
   }
 
 .detailImg{
   width:20px;
   height:20px;
+  margin-left:30px;
   }
   
 .message-content{
   display:flex;
+  justify-content:left;
+  }
+
+.message{
+  border:1px solid white;
+  padding:10px;
+  }
+
+.message-userName{
+   color:white;
+   font-weight:bold;
+   font-size:15px;
+
+  }
+
+.message-text{
+  color:white;
+  font-weight:bold;
+  font-size:15px;
+  margin-top:10px;
   }
 </style>
 

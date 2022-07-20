@@ -10,7 +10,7 @@
         <validation-provider v-slot="{errors}" rules="required|max:120">
           <label for="message" class="message-label">シェア</label>
           <br/>
-          <textarea v-model="newMessage" name="message" id="message" class="message-content"></textarea>
+          <textarea v-model="newMessage" name="message" id="message" class="message-form"></textarea>
           <div class="error">{{ errors[0] }}</div>
 
         </validation-provider>
@@ -77,7 +77,7 @@ export default{
    }
 
 .sideNav{
-  padding:16px 12px;
+  padding:16px 16px;
   }
   
 
@@ -85,28 +85,32 @@ export default{
  width:100px;
  }
 
- .message-content{
+ .message-form{
    width:300px;
    height:100px;
    border-radius:10px;
+   border:1px solid white;
    }
 .homeLink{
   text-decoration:none;
   color:white;
   font-size:13px;
   font-weight:bold;
+  margin:5px;
   }
 
 .logoutLink{
   color:white;
   font-size:13px;
+  margin:5px;
 }
 
 .share-btn{
   display:block;
    width:100px;
     border-radius:15px;
-    margin:10px left;
+    border:1px solid #704cbc;
+    margin:10px 0 0 auto;
     padding:5px 10px;
     color:white;
     cursor:pointer;
@@ -119,6 +123,7 @@ export default{
   font-size:13px;
   font-weight:bold;
   color:white;
+  margin:5px;
   }
      
   

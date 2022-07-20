@@ -99,4 +99,18 @@ export default{
     
   }
 </script>
+<style>
+.post-page{
+  display:flex;
+
+}
+
+.post{
+ 
+ }
+
+ .message{
+  width:100%;
+  }
+</style>
     
