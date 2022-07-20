@@ -57,18 +57,26 @@ methods:{
        }
        }else{
          
-          
-          await this.$axios.delete('http://localhost:8000/api/heart/${this.message.id}');
-          
+           if(currentUser) {
+           
+          const sendHeart={user_uid:currentUser.uid, message_id:this.message.id};
+        
+          await this.$axios.post('http://localhost:8000/api/heart/delete',sendHeart);
+         
+             
           
           this.message.hearts.length--;
           this.heartColor="whiteColor";
+
+          }
            
           
 
       }
+      
+      location.reload();
       this.getMessage();
-    },
+   },   
 
     
  
