@@ -59,7 +59,8 @@ methods:{
          
           
           await this.$axios.delete('http://localhost:8000/api/heart/${this.message.id}');
-          this.hearts=message.hearts;
+          
+          
           this.message.hearts.length--;
           this.heartColor="whiteColor";
            
