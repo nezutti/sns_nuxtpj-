@@ -105,8 +105,8 @@ methods:{
     mask-repeat: no-repeat;
    -webkit-mask-repeat: no-repeat;
     background-color:red;
-    background-color:white;
-    margin:0px 6px;
+  
+    
    
     width:20px;
     height:20px;

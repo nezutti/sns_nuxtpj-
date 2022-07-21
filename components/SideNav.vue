@@ -90,6 +90,7 @@ export default{
    height:100px;
    border-radius:10px;
    border:1px solid white;
+   padding:10px;
    }
 .homeLink{
   text-decoration:none;

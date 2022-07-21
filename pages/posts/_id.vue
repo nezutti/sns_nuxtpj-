@@ -2,12 +2,12 @@
   <div class="post-page">
     <SideNav></SideNav>
     <div class="post">
-      <div class="message">
-        <h2>ホーム</h2>
+      <div class="message2">
+        <h2 class="home-title">ホーム</h2>
         
         <Message v-if="message2"  v-bind:message="message2"></Message>
 
-        </div>
+        
         
         
         
@@ -16,11 +16,11 @@
       </div>
       
       <div class="comments">
-        <h3>コメント</h3>
+        <h3 class="comment-title">コメント</h3>
        
-        <div v-for="(comment,index) in comments">   
-          <p>{{comment.user.name}}</p>
-          <p>{{comment.comment}}</p>
+        <div v-for="(comment,index) in comments" class="comment">   
+          <p class="commentName">{{comment.user.name}}</p>
+          <p class="commentContent">{{comment.comment}}</p>
           
         </div>
           
@@ -28,10 +28,10 @@
         <div class="comment-form">
           <validation-observer ref="obs" v-slot="ObserverProps">
             <validation-provider v-slot="{errors}" rules="required|max:120">
-              <textarea v-model="newComment"  name="comment" id="comment"></textarea>
+              <textarea v-model="newComment"  name="comment" id="comment" class="comment-area"></textarea>
               <div class="error">{{ errors[0] }}</div>
             </validation-provider>
-            <button @click="insertComment">コメント</button>
+            <button @click="insertComment" class="comment-btn">コメント</button>
           </validation-observer>
         </div>
       </div>
@@ -100,17 +100,100 @@ export default{
   }
 </script>
 <style>
+*{
+   outline: 1px solid red !important;
+    
+
+    
+ }
+
+ .post{
+   width:100%;
+   }
+
+ .message2{
+   width:100%;
+   }
+
+.comments{
+  width:100%;
+  
+  }
+
+  .comment{
+    border-bottom:1px solid white;
+    border-left:1px solid white;
+    padding:10px;
+
+    }
+
+.comment-title{
+  border-bottom:1px solid white;
+  border-left:1px solid white;
+  font-size:14px;
+  text-align:center;
+  background-color:green;
+  padding:5px 0px;
+  color:white;
+  }
+
+
+
+
 .post-page{
   display:flex;
 
+
 }
 
-.post{
- 
- }
+.commentName{
+font-size:15px;
+font-weight:bold;
+color:white;
+}
 
- .message{
-  width:100%;
+.commentContent{
+   font-size:13px;
+   color:white;
+}
+
+.home-title{
+  border-left:1px solid white;
+  padding-top:5px;
+  background-color:green;
+
   }
+
+  .comment-form{
+     width:100%;
+     margin:20px;
+
+  }
+
+  .comment-area{
+    width:90%;
+    border-radius:5px;
+    border:1px solid white;
+    padding:2px 4px;
+
+    }
+
+  .comment-btn{
+    display:block;
+    width:100px;
+    border-radius:15px;
+    border:1px solid #704cbc;
+    margin:5px 50px 0 auto;
+    padding:5px;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+    background-color:#704cbc;
+
+    }
+    
+ 
+
+
 </style>
     
