@@ -98,12 +98,14 @@ export default{
   font-size:13px;
   font-weight:bold;
   margin:5px;
+  cursor:pointer;
   }
 
 .logoutLink{
   color:white;
   font-size:13px;
   margin:5px;
+  cursor:pointer;
 }
 
 .share-btn{

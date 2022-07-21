@@ -42,13 +42,13 @@ methods:{
   async changeHeart(){
        console.log(this.message);
        console.log(this.message.id);
-       this.activeheart=!this.activeheart;
+       this.activeHeart=!this.activeHeart;
        if(this.activeHeart){
          const currentUser = firebase.auth().currentUser;
          if(currentUser) {
            
            const sendHeart={user_uid:currentUser.uid, message_id:this.message.id};
-           await this.$axios.post("http://localhost:8000/api/heart/",sendHeart);
+           await this.$axios.post('http://localhost:8000/api/heart',sendHeart);
           
            this.message.hearts.length++;
            this.heartColor="redColor";
@@ -56,7 +56,7 @@ methods:{
 
        }
        }else{
-         
+           const currentUser = firebase.auth().currentUser;
            if(currentUser) {
            
           const sendHeart={user_uid:currentUser.uid, message_id:this.message.id};
