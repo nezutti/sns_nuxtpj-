@@ -3,7 +3,7 @@
     <img src="../img/logo.png" class="logo">
     <br/>
     <NuxtLink to="/" class="homeLink">ホーム</NuxtLink>
-    <h3 @click="logout" class="logoutLink">ログアウト</h3>
+    <p @click="logout" class="logoutLink">ログアウト</p>
 
     <div class="message-post">
       <validation-observer ref="obs" v-slot="ObserverProps">
@@ -70,7 +70,7 @@ export default{
 </script>
 <style>
 *{
-   
+     outline: 1px solid red !important;
    margin:0px;
    padding:0px;
    
@@ -101,12 +101,37 @@ export default{
   cursor:pointer;
   }
 
+  .homeLink::before{
+    content:"";
+    background: url(../img/home.png);
+    background-size: cover;
+    vertical-align: middle;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    margin-right:5px;
+    }
+
+
 .logoutLink{
   color:white;
   font-size:13px;
   margin:5px;
   cursor:pointer;
+  width:100px;
 }
+
+.logoutLink::before{
+    content:"";
+    background: url(../img/logout.png);
+    background-size: cover;
+    vertical-align: middle;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    margin-right:5px;
+    }
+  
 
 .share-btn{
   display:block;
@@ -127,6 +152,11 @@ export default{
   font-weight:bold;
   color:white;
   margin:5px;
+  }
+
+.error{
+ 
+  font-weight:bold;
   }
      
   
