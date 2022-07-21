@@ -91,9 +91,14 @@ export default{
     },
 
     async deleteComment(){
-        await this.$axios.delete("http://127.0.0.1:8000/api/comment/"+id);
+         const currentUser = firebase.auth().currentUser;
+         if(currentUser) {
+        const sendComment={user_uid:currentUser.uid, message_id:this.message2.id};
+        
+        await this.$axios.post('http://127.0.0.1:8000/api/comment/delete',sendComment);
         location.reload();
         this.findMessage();
+        }
     },
   
     

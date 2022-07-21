@@ -30,9 +30,12 @@ props:["message"],
 
 methods:{
   async deleteMessage(id){
+      console.log(this.message);
+      
       await this.$axios.delete("http://127.0.0.1:8000/api/message/"+id);
        location.reload();
       this.getMessage();
+
      },
  
   async toCommentPage(id){
@@ -40,9 +43,9 @@ methods:{
    },
 
   async changeHeart(){
-       console.log(this.message);
-       console.log(this.message.id);
-       this.activeHeart=!this.activeHeart;
+       
+       
+      this.activeHeart=!this.activeHeart;
        if(this.activeHeart){
          const currentUser = firebase.auth().currentUser;
          if(currentUser) {
@@ -61,21 +64,20 @@ methods:{
            
           const sendHeart={user_uid:currentUser.uid, message_id:this.message.id};
         
-          await this.$axios.post('http://localhost:8000/api/heart/delete',sendHeart);
+          await this.$axios.post("http://localhost:8000/api/heart/delete",sendHeart);
          
              
           
           this.message.hearts.length--;
           this.heartColor="whiteColor";
 
+
           }
            
-          
-
-      }
-      
+       }
       location.reload();
       this.getMessage();
+      
    },   
 
     
@@ -110,6 +112,7 @@ methods:{
    
     width:20px;
     height:20px;
+    cursor:pointer;
   }
 
 .whiteColor{
@@ -124,18 +127,21 @@ methods:{
    
     width:20px;
     height:20px;
+    cursor:pointer;
     }
 
 .crossImg{
   width:20px;
   height:20px;
   margin-left:6px;
+  cursor:pointer;
   }
 
 .detailImg{
   width:20px;
   height:20px;
   margin-left:30px;
+  cursor:pointer;
   }
   
 .message-content{

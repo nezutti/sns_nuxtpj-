@@ -24,11 +24,10 @@ export default{
 
   methods:{
      async getMessage(){
-     const resMessage=await this.$axios.get( "http://127.0.0.1:8000/api/message/");
+     const resMessage=await this.$axios.get( 'http://127.0.0.1:8000/api/message/');
      
      this.messages=resMessage.data.data;
-     console.log(this.messages);
-     console.log(this.messages.comments);
+    
      }
 
      },
