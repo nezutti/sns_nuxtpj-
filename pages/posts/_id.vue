@@ -101,7 +101,7 @@ export default{
 </script>
 <style>
 *{
-   outline: 1px solid red !important;
+   
     
 
     
@@ -124,6 +124,7 @@ export default{
     border-bottom:1px solid white;
     border-left:1px solid white;
     padding:10px;
+    
 
     }
 
@@ -147,7 +148,7 @@ export default{
 }
 
 .commentName{
-font-size:15px;
+font-size:13px;
 font-weight:bold;
 color:white;
 }
@@ -191,6 +192,10 @@ color:white;
     background-color:#704cbc;
 
     }
+
+  .commentContent{
+     margin-top:10px;
+     }
     
  
 

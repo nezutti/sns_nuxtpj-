@@ -157,7 +157,7 @@ methods:{
 
 .message-text{
   color:white;
-  font-weight:bold;
+  
   font-size:15px;
   margin-top:10px;
   }

@@ -56,9 +56,9 @@ export default{
 
 .home-contents{
   
-  padding-top:10px;
+ 
   width:100%;
-  border:1px solid white;
+  
   }
 
 .home-title{
@@ -67,7 +67,9 @@ export default{
    font-size:16px;
    padding-bottom:10px;
    border-bottom:1px solid white;
+   border-left:1px solid white;
    padding-left:10px;
+   padding-top:10px;
   
 
    }
