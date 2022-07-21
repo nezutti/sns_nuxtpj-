@@ -18,8 +18,13 @@
       <div class="comments">
         <h3 class="comment-title">コメント</h3>
        
-        <div v-for="(comment,index) in comments" class="comment">   
-          <p class="commentName">{{comment.user.name}}</p>
+        <div v-for="(comment,index) in comments" class="comment"> 
+            
+          <div class="commentNameCross">
+            <p class="commentName">{{comment.user.name}}</p>
+          
+            <img src="../../img/cross.png" class="commentCrossImg" @click="deleteComment">
+          </div>
           <p class="commentContent">{{comment.comment}}</p>
           
         </div>
@@ -197,6 +202,17 @@ color:white;
      margin-top:10px;
      }
     
+  .commentNameCross{
+    display:flex;
+    }
+
+  .commentCrossImg{
+   width:20px;
+   height:20px;
+   margin-left:30px;
+   }
+
+
  
 
 
