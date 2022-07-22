@@ -78,7 +78,7 @@ methods:{
            
        }
       
-      this.findMessage(this.message.id);
+      this.findGetMessage;
       
    },   
 
@@ -95,9 +95,9 @@ methods:{
      },
 
  
-  async findMessage(id){
+  async findGetMessage(){
        
-       const findData=await this.$axios.get("http://127.0.0.1:8000/api/message/"+id);
+       const findData=await this.$axios.get('http://127.0.0.1:8000/api/message/${this.message.id}');
        this.message=findData.data.data;
        console.log(this.message);
 
