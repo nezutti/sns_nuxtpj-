@@ -34,7 +34,7 @@ methods:{
       
       await this.$axios.delete("http://127.0.0.1:8000/api/message/"+id);
        location.reload();
-      this.getMessage();
+       this.findMessage(this.message.id);
 
      },
  
@@ -78,7 +78,7 @@ methods:{
            
        }
       
-      this.getMessage();
+      this.findMessage(this.message.id);
       
    },   
 
@@ -93,6 +93,16 @@ methods:{
     
      this.messages=resMessage.data.data;
      },
+
+ 
+  async findMessage(id){
+       
+       const findData=await this.$axios.get("http://127.0.0.1:8000/api/message/"+id);
+       this.message=findData.data.data;
+       console.log(this.message);
+
+       }
+     
 
  
 
