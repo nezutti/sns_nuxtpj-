@@ -3,8 +3,8 @@
     <div class="message-content">
       
       <p class="message-userName">{{message.user.name}}</p>
-      <img src="../img/heart.png" v-if="!activeHeart" class="heartColor" @click="changeHeart()">
-      <img src="../img/heart3.png" v-if="activeHeart"  class="heartColor" @click="changeHeart()">
+      <img src="../img/heart.png" v-if="activeHeart" class="heartColor" @click="changeHeart()">
+      <img src="../img/heart3.png" v-if="!activeHeart"  class="heartColor" @click="changeHeart()">
       <p>{{message.hearts.length}}</p>
       <img src="../img/cross.png" class="crossImg" @click="deleteMessage(message.id)">
       <img src="../img/detail.png" class="detailImg" @click="toCommentPage(message.id)">
@@ -19,7 +19,7 @@ export default{
 
 data(){
     return{
-       activeHeart:false,
+       activeHeart:true,
        
        
        
