@@ -3,7 +3,8 @@
     <div class="message-content">
       
       <p class="message-userName">{{message.user.name}}</p>
-      <img src="../img/heart.png" v-bind:class="heartColor" @click="changeHeart()">
+      <img src="../img/heart.png" v-if="!activeHeart" class="heartColor" @click="changeHeart()">
+      <img src="../img/heart3.png" v-if="activeHeart"  class="heartColor" @click="changeHeart()">
       <p>{{message.hearts.length}}</p>
       <img src="../img/cross.png" class="crossImg" @click="deleteMessage(message.id)">
       <img src="../img/detail.png" class="detailImg" @click="toCommentPage(message.id)">
@@ -19,7 +20,7 @@ export default{
 data(){
     return{
        activeHeart:false,
-       heartColor:"whiteColor",
+       
        
        
        
@@ -33,8 +34,9 @@ methods:{
       console.log(this.message);
       
       await this.$axios.delete("http://127.0.0.1:8000/api/message/"+id);
-       location.reload();
-       this.findMessage(this.message.id);
+      location.reload();
+       
+      
 
      },
  
@@ -55,7 +57,7 @@ methods:{
            await this.$axios.post('http://localhost:8000/api/heart',sendHeart);
           
            this.message.hearts.length++;
-           this.heartColor="redColor";
+           
           
 
        }
@@ -71,14 +73,14 @@ methods:{
              
           
           this.message.hearts.length--;
-          this.heartColor="whiteColor";
+          
 
 
           }
            
        }
       
-      this.findGetMessage;
+    
       
    },   
 
@@ -94,15 +96,13 @@ methods:{
      this.messages=resMessage.data.data;
      },
 
- 
-  async findGetMessage(){
-       
-       const findData=await this.$axios.get('http://127.0.0.1:8000/api/message/${this.message.id}');
-       this.message=findData.data.data;
-       console.log(this.message);
 
-       }
+
+    
+
+
      
+  
 
  
 
@@ -111,36 +111,11 @@ methods:{
 </script>
 <style>
  
- .redColor{
-   -webkit-mask-image:url("../img/heart.png");
-    mask-image: url("../img/heart.png");
-    mask-size: contain;
-   -webkit-mask-size: contain;
-    mask-repeat: no-repeat;
-   -webkit-mask-repeat: no-repeat;
-    background-color:red;
-  
-    
-   
-    width:20px;
-    height:20px;
-    cursor:pointer;
-  }
-
-.whiteColor{
-  -webkit-mask-image:url("../img/heart.png");
-   mask-image: url("../img/heart.png");
-   mask-size: contain;
-   -webkit-mask-size: contain;
-    mask-repeat: no-repeat;
-   -webkit-mask-repeat: no-repeat;
-   background-color:white;
-   margin:0px 6px;
-   
-    width:20px;
-    height:20px;
-    cursor:pointer;
-    }
+ .heartColor{
+      width:20px;
+      height:20px;
+      margin:0px 6px;
+ }
 
 .crossImg{
   width:20px;
