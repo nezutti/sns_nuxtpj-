@@ -54,7 +54,8 @@ methods:{
          if(currentUser) {
            
            const sendHeart={user_uid:currentUser.uid, message_id:this.message.id};
-           await this.$axios.post('http://localhost:8000/api/heart',sendHeart);
+          const data=await this.$axios.post('http://localhost:8000/api/heart',sendHeart);
+          console.log(data);
           
            this.message.hearts.length++;
            
@@ -67,9 +68,9 @@ methods:{
            if(currentUser) {
            
           const sendHeart={user_uid:currentUser.uid, message_id:this.message.id};
-        
-          await this.$axios.post('http://localhost:8000/api/heart/delete',sendHeart);
-         
+          
+          const data=await this.$axios.post('http://localhost:8000/api/heart/delete',sendHeart);
+           console.log(data);
              
           
           this.message.hearts.length--;
