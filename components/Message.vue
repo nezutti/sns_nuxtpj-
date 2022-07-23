@@ -64,11 +64,11 @@ methods:{
 
        }
        }else{
-           
-           const currentUser = firebase.auth().currentUser;
+          const currentUser = firebase.auth().currentUser;
+           console.log(currentUser);
            if(currentUser) {
            
-          const sendHeart={user_uid:currentUser.uid, message_id:this.message.id};
+          const sendHeart={user_uid:currentUser.uid,message_id:this.message.id};
           
           const data=await this.$axios.post('http://localhost:8000/api/heart/delete',sendHeart);
            console.log(data);
