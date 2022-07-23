@@ -101,13 +101,17 @@ methods:{
    
    
    async findHeart(){
-     const currentUser = firebase.auth().currentUser;
-     if(currentUser) {
-           
-    const findData={user_uid:currentUser.uid, message_id:this.message.id};
-    await this.$axios.post('http://localhost:8000/api/heart/find',findData);
+  
+     firebase.auth().onAuthStateChanged((user) => {
+     if(user){      
+      user_uid=user.uid;
+      await this.$axios.post('http://localhost:8000/api/heart/find',user_uid);
+      
+    
     }
-    }
+    })
+
+  }
           
 
 },
