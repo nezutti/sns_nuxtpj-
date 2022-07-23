@@ -98,18 +98,23 @@ methods:{
     
      this.messages=resMessage.data.data;
      },
+   
+   
+   async findHeart(){
+     const currentUser = firebase.auth().currentUser;
+     if(currentUser) {
+           
+    const findData={user_uid:currentUser.uid, message_id:this.message.id};
+    await this.$axios.post('http://localhost:8000/api/heart/find',findData);
+    }
+    }
+          
 
+},
 
-
-    
-
-
-     
-  
-
- 
-
-}
+created(){
+    this.findHeart();
+  }
 }
 </script>
 <style>
