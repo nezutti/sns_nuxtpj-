@@ -49,7 +49,7 @@ methods:{
        
     
        if(this.activeHeart){
-         this.activeHeart=!this.activeHeart;
+         
          const currentUser = firebase.auth().currentUser;
          if(currentUser) {
            
@@ -58,12 +58,13 @@ methods:{
           console.log(data);
           
            this.message.hearts.length++;
+            this.activeHeart=!this.activeHeart;
            
           
 
        }
        }else{
-           this.activeHeart=!this.activeHeart;
+           
            const currentUser = firebase.auth().currentUser;
            if(currentUser) {
            
@@ -74,6 +75,7 @@ methods:{
              
           
           this.message.hearts.length--;
+          this.activeHeart=!this.activeHeart;
           
 
 
