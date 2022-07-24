@@ -107,7 +107,7 @@ methods:{
       console.log(user);  
       console.log(user.uid);
       console.log(this.message.id);  
-      const findData={user_id:user.uid,message_id:this.message.id};
+      const findData={user_uid:user.uid,message_id:this.message.id};
       const heartData=await this.$axios.post('http://localhost:8000/api/heart/find',findData);
       console.log(heartData);
       if(heartData.data.data.user_uid==user.uid){
