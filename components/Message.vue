@@ -105,10 +105,10 @@ methods:{
      firebase.auth().onAuthStateChanged(async (user) => {
      if(user){  
       console.log(user);    
-      const findData=user.uid;
+      const findData={user_id:user.uid,message_id:this.message.id};
       const heartData=await this.$axios.post('http://localhost:8000/api/heart/find',findData);
       console.log(heartData);
-      if(heartData.data.data.user_uid=user.uid){
+      if(heartData.data.data.user_uid==user.uid){
        this.activeHeart=false;
     
         }
