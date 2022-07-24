@@ -102,9 +102,10 @@ methods:{
    
    async findHeart(){
   
-     firebase.auth().onAuthStateChanged((user) => {
-     if(user){      
-      user_uid=user.uid;
+     firebase.auth().onAuthStateChanged(async (user) => {
+     if(user){  
+      console.log(user);    
+      const user_uid=user.uid;
       await this.$axios.post('http://localhost:8000/api/heart/find',user_uid);
       
     
