@@ -62,31 +62,20 @@ export default{
     async findMessage(){
        
        const findData=await this.$axios.get(`http://127.0.0.1:8000/api/message/${this.$route.params.id}`);
-      
        this.message2=findData.data.data;
        this.comments=findData.data.data.comments;
-       console.log(this.message2);
-       console.log(this.message2.message);
-       console.log(this.message2.comments);
-       console.log(this.message2.user);
-       console.log(this.message2.user.name);
-       console.log(this.comments);
-       
-      
-      
-      
-       
-
-     },
+      },
 
     async insertComment(){
       const currentUser = firebase.auth().currentUser;
+      
       if(currentUser) {
-      const sendComment= { comment: this.newComment, user_uid: currentUser.uid,message_id:this.message2.id} ;
+      const sendComment= { comment: this.newComment, user_uid: currentUser.uid,message_id:this.message2.id};
         
-      await this.$axios.post("http://127.0.0.1:8000/api/comment/",sendComment);
-      this.findMessage();
-    }
+      await this.$axios.post('http://127.0.0.1:8000/api/comment/',sendComment);
+    
+       }
+       this.findMessage();
 
     },
 
@@ -179,6 +168,7 @@ color:white;
   .comment-form{
      width:100%;
      margin:20px;
+     
 
   }
 
@@ -187,6 +177,7 @@ color:white;
     border-radius:5px;
     border:1px solid white;
     padding:2px 4px;
+    color:white;
 
     }
 

@@ -108,6 +108,10 @@ input{
      background-color:#704cbc;
      
      }
+
+    .error{
+     background-color:white;
+     }
 </style>
 
         

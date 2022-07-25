@@ -46,16 +46,16 @@ export default{
     const currentUser = firebase.auth().currentUser;
       if(currentUser) {
         const sendMessage = { message: this.newMessage, user_uid: currentUser.uid };
-        console.log(sendMessage);
+        
         await this.$axios.post("http://127.0.0.1:8000/api/message", sendMessage);
         this.getMessage();
+        location.reload();
       }
     },
 
      async getMessage(){
      const resMessage=await this.$axios.get( "http://127.0.0.1:8000/api/message/");
-     console.log(resMessage);
-      location.reload()
+     
      this.messages=resMessage.data.data;
      },
 
@@ -91,6 +91,7 @@ export default{
    border-radius:10px;
    border:1px solid white;
    padding:10px;
+   color:white;
    }
 .homeLink{
   text-decoration:none;
@@ -157,6 +158,7 @@ export default{
 .error{
  
   font-weight:bold;
+ 
   }
      
   

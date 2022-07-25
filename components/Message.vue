@@ -31,7 +31,7 @@ props:["message"],
 
 methods:{
   async deleteMessage(id){
-      console.log(this.message);
+    
       
       await this.$axios.delete("http://127.0.0.1:8000/api/message/"+id);
       location.reload();
@@ -71,7 +71,7 @@ methods:{
           const sendHeart={user_uid:currentUser.uid,message_id:this.message.id};
           
           const data=await this.$axios.post('http://localhost:8000/api/heart/delete',sendHeart);
-           console.log(data);
+          
              
           
           this.message.hearts.length--;
@@ -93,10 +93,7 @@ methods:{
 
    async getMessage(){
     const resMessage=await this.$axios.get( "http://127.0.0.1:8000/api/message/");
-     
-    
-    
-     this.messages=resMessage.data.data;
+    this.messages=resMessage.data.data;
      },
    
    
@@ -104,9 +101,7 @@ methods:{
   
      firebase.auth().onAuthStateChanged(async (user) => {
      if(user){  
-      console.log(user);  
-      console.log(user.uid);
-      console.log(this.message.id);  
+       
       const findData={user_uid:user.uid,message_id:this.message.id};
       const heartData=await this.$axios.post('http://localhost:8000/api/heart/find',findData);
       console.log(heartData);
@@ -172,6 +167,10 @@ created(){
   font-size:15px;
   margin-top:10px;
   }
+
+  .message-content p{
+   color:white;
+   }
 </style>
 
 
