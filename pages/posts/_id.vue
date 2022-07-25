@@ -76,7 +76,9 @@ export default{
     
        }
        this.findMessage();
+       location.reload();
 
+       
     },
 
 
