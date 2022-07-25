@@ -23,7 +23,7 @@
           <div class="commentNameCross">
             <p class="commentName">{{comment.user.name}}</p>
           
-            <img src="../../img/cross.png" class="commentCrossImg" @click="deleteComment">
+            <img src="../../img/cross.png" class="commentCrossImg" @click="deleteComment(comment.id)">
           </div>
           <p class="commentContent">{{comment.comment}}</p>
           
@@ -90,15 +90,16 @@ export default{
 
     },
 
-    async deleteComment(){
-         const currentUser = firebase.auth().currentUser;
-         if(currentUser) {
-        const sendComment={user_uid:currentUser.uid, message_id:this.message2.id};
+
+
+    async deleteComment(id){
         
-        await this.$axios.post('http://127.0.0.1:8000/api/comment/delete',sendComment);
+        await this.$axios.delete('http://127.0.0.1:8000/api/comment/'+id);
         location.reload();
-        this.findMessage();
-        }
+        
+        
+       
+        
     },
   
     
