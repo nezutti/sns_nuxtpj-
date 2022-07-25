@@ -144,7 +144,7 @@ export default{
   border-left:1px solid white;
   font-size:14px;
   text-align:center;
-  background-color:green;
+  background-color:#00053a;
   padding:5px 0px;
   color:white;
   }
@@ -172,7 +172,7 @@ color:white;
 .home-title{
   border-left:1px solid white;
   padding-top:5px;
-  background-color:green;
+  background-color:#00053a;
 
   }
 
